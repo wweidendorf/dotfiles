@@ -73,7 +73,7 @@ export HISTCONTROL="ignoredups"
 
 # Ignore some controlling instructions
 # export HISTIGNORE="[   ]*:&:bg:fg:exit"
-export HISTIGNORE="&:ls:[bf]g:exit:gst:gl:gp:gitx"
+export HISTIGNORE="&:ls:[bf]g:exit:gst:gl:gp:gittower"
 
 # Whenever displaying the prompt, write the previous line to disk
 # export PROMPT_COMMAND="history -a"
@@ -124,8 +124,6 @@ function m {
     mate .
   fi
 }
-
-
 
 # Setup automatic bundle exec for common gem executables
 
@@ -226,6 +224,7 @@ alias gdc='git diff --cached | gitx'
 alias gdic='git diff --cached --ignore-space-change | gitx'
 alias gi='git commit'
 alias gc='git checkout'
+alias gt='gittower'
 
 function git-add-remote-branch {
   git push origin origin:refs/heads/$1
@@ -352,6 +351,7 @@ function sshc {
     ssh xspond@xmp1.xspond.com
   fi
 }
+
 complete -W 'api1 autodata1 aws1 client1 data db1 db2 dev facebook1 git keymaster legacy1 media1 old_autodata p1 php1 proxy1 staging_autodata staging_media staging_xmp1 xmp1' $default sshc
 
 function tunnel {
@@ -369,7 +369,7 @@ function tunnel {
     ssh -L 8888:db1:27017 -N xspond@proxy1.xspond.com
   elif [ "db1_mysql" == "$1" ]
   then
-    ssh -L 3308:db1:3306 -N xspond@proxy1.xspond.com
+    ssh -L 3306:db1:3306 -N xspond@proxy1.xspond.com
   elif [ "dtp_rdc" == "$1" ]
   then
     ssh -L 3389:dtp:3389 -N -C xspond@proxy1.xspond.com
@@ -410,19 +410,25 @@ fi
 # export EC2_CERT=~/.ec2/cert-Y4HR7ABMOEFP56SQUHSEL5FBYT3A753C.pem
 # export JAVA_HOME="/cygdrive/c/Program Files/Java/jdk1.6.0_03"
 
-export PATH=$PATH:/usr/local/git/bin:/Library/PostgreSQL/8.3/bin
+# Add git to the PATH
+export PATH=$PATH:/usr/local/git/bin
+
+# Add Java stuff to the path
+export PATH=$PATH:/usr/local/maven/bin
+
+# Add node to the path
+export PATH=$PATH:/usr/local/node/bin:/usr/local/mongodb/bin
 
 export MANPATH=/usr/local/git/man:$MANPATH
 
 # Setup CDPATH
-PROJ_DIR="~/webdev"
-ORDERED_SUBFOLDERS="citadel platform apps xspond client_sites blueprints helpers libraries server misc plugins"
+PROJ_DIR="~/Projects/Work"
+ORDERED_SUBFOLDERS="citadel omega libraries dealers blueprints assets infrastructure open_source platform"
 
 CDPATH=".:~:$PROJ_DIR"
 for FOLDER in $ORDERED_SUBFOLDERS; do
   CDPATH="$CDPATH:$PROJ_DIR/$FOLDER"
 done
-export CDPATH="$CDPATH:~/Desktop:~/Desktop/Imports"
 
 export CLICOLOR="1"
 
@@ -432,6 +438,12 @@ export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=50000000
 
 export BUNDLER_EDITOR=mate
+
+# Set environment flags for build scripts
+export ARCHFLAGS="-arch x86_64"
+export JOBS=9
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*
 
 if [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi
 [[ -r $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
