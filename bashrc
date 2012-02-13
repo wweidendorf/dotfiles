@@ -180,7 +180,19 @@ function sr {
 	fi
 }
 function ss {
-	if [ -f './script/rails' ]; then
+	if [[ -f './config.ru' && -f './script/rails' ]]; then
+		if [[ -n "$*" || "$*" == "" ]]; then
+			bundle exec unicorn_rails -p 3000
+		else
+			bundle exec unicorn_rails $*
+		fi
+	elif [ -f './config.ru' ]; then
+		if [[ -n "$*" || "$*" == "" ]]; then
+			unicorn -p 3000
+		else
+			unicorn $*
+		fi
+	elif [ -f './script/rails' ]; then
 		rails server $*
 	elif [ -f './script/server' ]; then
 		./script/server $*
