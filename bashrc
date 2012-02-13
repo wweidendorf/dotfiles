@@ -286,30 +286,9 @@ complete -F _gem_doc_list gemdoc
 
 
 function sshc {
-  if [ "api1" == "$1" ]
-  then
-    ssh xspond@api1 -o 'ProxyCommand ssh gateway@proxy1.xspond.com exec nc %h %p'
-  elif [ "autodata1" == "$1" ]
-  then
-    ssh xspond@autodata1.xspond.com
-  elif [ "aws1" == "$1" ]
-  then
-    ssh ubuntu@ec2-184-72-213-130.compute-1.amazonaws.com
-  elif [ "client1" == "$1" ]
-  then
-    ssh xspond@client1.xspond.com
-  elif [ "data" == "$1" ]
+  if [ "data" == "$1" ]
   then
     ssh Administrator@10.10.10.5
-  elif [ "db1" == "$1" ]
-  then
-    ssh xspond@db1 -o 'ProxyCommand ssh gateway@proxy1.xspond.com exec nc %h %p'
-  elif [ "db2" == "$1" ]
-  then
-    ssh xspond@db2 -o 'ProxyCommand ssh gateway@proxy1.xspond.com exec nc %h %p'
-  elif [ "dev" == "$1" ]
-  then
-    ssh xspond@dev.xspond.com
   elif [ "facebook1" == "$1" ]
   then
     ssh xspond@facebook1.xspond.com
@@ -319,40 +298,20 @@ function sshc {
   elif [ "keymaster" == "$1" ]
   then
     ssh keymaster@keymaster.xspond.com
-  elif [ "legacy1" == "$1" ]
-  then
-    ssh xspond@legacy1.xspond.com
+  # elif [ "legacy1" == "$1" ]
+  # then
+  #   ssh xspond@legacy1.xspond.com
   elif [ "media1" == "$1" ]
   then
     ssh xspond@media.xspond.com
-  elif [ "old_autodata" == "$1" ]
-  then
-    ssh xspond@autodata1 -o 'ProxyCommand ssh gateway@proxy1.xspond.com exec nc %h %p'
-  elif [ "p1" == "$1" ]
-  then
-    ssh xspond@production1.xspond.com
-  elif [ "php1" == "$1" ]
-  then
-    ssh xspond@php1.xspond.com
-  elif [ "proxy1" == "$1" ]
-  then
-    ssh xspond@proxy1.xspond.com
-  elif [ "staging_autodata" == "$1" ]
-  then
-    ssh xspond@10.10.10.21
-  elif [ "staging_media" == "$1" ]
-  then
-    ssh xspond@media.xspond.local
-  elif [ "staging_xmp1" == "$1" ]
-  then
-    ssh xspond@10.10.10.23
   elif [ "xmp1" == "$1" ]
   then
     ssh xspond@xmp1.xspond.com
   fi
 }
 
-complete -W 'api1 autodata1 aws1 client1 data db1 db2 dev facebook1 git keymaster legacy1 media1 old_autodata p1 php1 proxy1 staging_autodata staging_media staging_xmp1 xmp1' $default sshc
+complete -W 'aws1 data facebook1 git keymaster legacy1 media1 proxy1 xmp1' $default sshc
+complete -W 'api1 client1 db1 db2 dev' $default ssh
 
 function tunnel {
   if [ "api1_ipmi" == "$1" ]
@@ -370,6 +329,9 @@ function tunnel {
   elif [ "db1_mysql" == "$1" ]
   then
     ssh -L 3306:db1:3306 -N xspond@proxy1.xspond.com
+  elif [ "client1_postgres" == "$1" ]
+  then
+    ssh -L 6543:localhost:5432 -N xspond@client1.xspond.com
   elif [ "dtp_rdc" == "$1" ]
   then
     ssh -L 3389:dtp:3389 -N -C xspond@proxy1.xspond.com
@@ -385,7 +347,7 @@ function tunnel {
     ssh -L 5433:127.0.0.1:5432 -N xspond@xmp1.xspond.com
   fi
 }
-complete -W 'api1_ipmi db1_areca db1_ipmi db1_mongo db1_mysql dtp_rdc netgear_http staging_postgres xmp_postgres' $default tunnel
+complete -W 'api1_ipmi client1_postgres db1_areca db1_ipmi db1_mongo db1_mysql dtp_rdc netgear_http staging_postgres xmp_postgres' $default tunnel
 
 
 # Functions
