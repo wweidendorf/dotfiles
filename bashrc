@@ -408,7 +408,9 @@ export BUNDLER_EDITOR=mate
 export ARCHFLAGS="-arch x86_64"
 export JOBS=9
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*
+# Use rbenv
+export PATH=$HOME/.rbenv/bin:$PATH
+eval "$(rbenv init -)"
 
-if [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi
-[[ -r $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
+# Add bundler binstubs to the head of the path
+export PATH=./.bin:$PATH
