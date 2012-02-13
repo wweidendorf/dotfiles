@@ -381,6 +381,9 @@ export PATH=$PATH:/usr/local/maven/bin
 # Add node to the path
 export PATH=$PATH:/usr/local/node/bin:/usr/local/mongodb/bin
 
+# Add MySQL to the path
+export PATH=$PATH:/usr/local/mysql/bin
+
 export MANPATH=/usr/local/git/man:$MANPATH
 
 # Setup CDPATH
