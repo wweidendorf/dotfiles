@@ -206,7 +206,7 @@ alias rdm='rake db:migrate'
 alias rr='rake routes'
 
 alias b='bundle'
-alias bi="b install --path vendor"
+alias bi="b install --path vendor --binstubs=.bin"
 alias bu="b update"
 alias be="b exec"
 alias bo="b open"
