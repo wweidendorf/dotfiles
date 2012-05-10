@@ -4,13 +4,17 @@ Host *
 Host 10.10.10.*
 	ServerAliveInterval 3600
 
-Host api1
+Host apps1
 	user xspond
 	ProxyCommand ssh gateway@proxy1.xspond.com exec nc %h %p
 
-Host autodata1
+Host apps2
 	user xspond
 	ProxyCommand ssh gateway@proxy1.xspond.com exec nc %h %p
+
+Host client1
+	user xspond
+	HostName client1.xspond.com
 
 Host db1
 	user xspond
@@ -20,18 +24,30 @@ Host db2
 	user xspond
 	ProxyCommand ssh gateway@proxy1.xspond.com exec nc %h %p
 
-Host client1
-	user xspond
-	HostName client1.xspond.com
-
 Host dev
 	user xspond
 	HostName dev.xspond.com
+
+Host keymaster
+	user keymaster
+	HostName keymaster.xspond.com
 
 Host legacy1
 	user xspond
 	HostName legacy1.xspond.com
 
+Host media
+	user xspond
+	HostName media.xspond.com
+
 Host proxy1
 	user xspond
 	HostName proxy1.xspond.com
+
+Host staging
+	user xspond
+	HostName staging.xspond.com
+
+Host utilities
+	user xspond
+	ProxyCommand ssh gateway@proxy1.xspond.com exec nc %h %p

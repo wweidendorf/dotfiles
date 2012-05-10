@@ -252,16 +252,56 @@ function git-remove-remote-branch {
   git push origin :heads/$1
 }
 
-complete -o bashdefault -o default -o nospace -F _git_pull gl 2>/dev/null \
-	|| complete -o default -o nospace -F _git_pull gl
-complete -o bashdefault -o default -o nospace -F _git_push gp 2>/dev/null \
-	|| complete -o default -o nospace -F _git_push gp
+_gl_git ()
+{
+ local i c=1 command="pull" __git_dir
+
+ local cur words cword prev
+ _get_comp_words_by_ref -n =: cur words cword prev
+
+ _git_pull
+}
+
+_gp_git ()
+{
+ local i c=1 command="push" __git_dir
+
+ local cur words cword prev
+ _get_comp_words_by_ref -n =: cur words cword prev
+
+ _git_push
+}
+
+_gc_git ()
+{
+ local i c=1 command="checkout" __git_dir
+
+ local cur words cword prev
+ _get_comp_words_by_ref -n =: cur words cword prev
+
+ _git_checkout
+}
+
+_gi_git ()
+{
+ local i c=1 command="commit" __git_dir
+
+ local cur words cword prev
+ _get_comp_words_by_ref -n =: cur words cword prev
+
+ _git_commit
+}
+
+complete -o bashdefault -o default -o nospace -F _gl_git gl 2>/dev/null \
+ || complete -o default -o nospace -F _gl_git gl
+complete -o bashdefault -o default -o nospace -F _gp_git gp 2>/dev/null \
+ || complete -o default -o nospace -F _gp_git gp
 complete -o bashdefault -o default -o nospace -F _git_status gst 2>/dev/null \
-	|| complete -o default -o nospace -F _git_status gst
-complete -o bashdefault -o default -o nospace -F _git_checkout gc 2>/dev/null \
-	|| complete -o default -o nospace -F _git_checkout gc
-complete -o bashdefault -o default -o nospace -F _git_commit gi 2>/dev/null \
-	|| complete -o default -o nospace -F _git_commit gi
+ || complete -o default -o nospace -F _git_status gst
+complete -o bashdefault -o default -o nospace -F _gc_git gc 2>/dev/null \
+ || complete -o default -o nospace -F _gc_git gc
+complete -o bashdefault -o default -o nospace -F _gi_git gi 2>/dev/null \
+ || complete -o default -o nospace -F _gi_git gi
 
 
 # Aliases for ruby
@@ -297,37 +337,10 @@ complete -F _gem_list cdgem
 complete -F _gem_list mategem
 complete -F _gem_doc_list gemdoc
 
-
-function sshc {
-  if [ "data" == "$1" ]
-  then
-    ssh Administrator@10.10.10.5
-  elif [ "facebook1" == "$1" ]
-  then
-    ssh xspond@facebook1.xspond.com
-  elif [ "git" == "$1" ]
-  then
-    ssh xspond@git.xspond.com
-  elif [ "keymaster" == "$1" ]
-  then
-    ssh keymaster@keymaster.xspond.com
-  # elif [ "legacy1" == "$1" ]
-  # then
-  #   ssh xspond@legacy1.xspond.com
-  elif [ "media1" == "$1" ]
-  then
-    ssh xspond@media.xspond.com
-  elif [ "xmp1" == "$1" ]
-  then
-    ssh xspond@xmp1.xspond.com
-  fi
-}
-
-complete -W 'aws1 data facebook1 git keymaster legacy1 media1 proxy1 xmp1' $default sshc
-complete -W 'api1 client1 db1 db2 dev' $default ssh
+complete -W 'apps1 apps2 client1 db1 db2 dev keymaster legacy1 media proxy1 staging utilities' $default ssh
 
 function tunnel {
-  if [ "api1_ipmi" == "$1" ]
+  if [ "apps1_ipmi" == "$1" ]
   then
     ssh -L 8080:10.10.11.52:80 -N xspond@proxy1.xspond.com
   elif [ "db1_areca" == "$1" ]
@@ -360,7 +373,7 @@ function tunnel {
     ssh -L 5433:127.0.0.1:5432 -N xspond@xmp1.xspond.com
   fi
 }
-complete -W 'api1_ipmi db1_areca db1_ipmi db1_mongo db1_mysql db2_mongo dtp_rdc netgear_http staging_postgres xmp_postgres' $default tunnel
+complete -W 'apps1_ipmi db1_areca db1_ipmi db1_mongo db1_mysql db2_mongo dtp_rdc netgear_http staging_postgres xmp_postgres' $default tunnel
 
 
 # Functions
@@ -427,3 +440,7 @@ eval "$(rbenv init -)"
 
 # Add bundler binstubs to the head of the path
 export PATH=./.bin:$PATH
+
+# Use GCC to compile for now, not clang
+export CC=/usr/bin/gcc
+
