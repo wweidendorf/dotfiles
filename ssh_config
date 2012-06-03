@@ -4,7 +4,7 @@ Host *
 Host 10.10.10.*
 	ServerAliveInterval 3600
 
-Host apps1
+Host api1
 	user xspond
 	ProxyCommand ssh gateway@proxy1.xspond.com exec nc %h %p
 
