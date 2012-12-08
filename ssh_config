@@ -12,10 +12,6 @@ Host apps2
 	user xspond
 	ProxyCommand ssh gateway@proxy1.xspond.com exec nc %h %p
 
-Host client1
-	user xspond
-	HostName client1.xspond.com
-
 Host db1
 	user xspond
 	ProxyCommand ssh gateway@proxy1.xspond.com exec nc %h %p
@@ -23,14 +19,6 @@ Host db1
 Host db2
 	user xspond
 	ProxyCommand ssh gateway@proxy1.xspond.com exec nc %h %p
-
-Host dev
-	user xspond
-	HostName dev.xspond.com
-
-Host keymaster
-	user keymaster
-	HostName keymaster.xspond.com
 
 Host legacy1
 	user xspond

@@ -324,7 +324,7 @@ complete -F _gem_list cdgem
 complete -F _gem_list mategem
 complete -F _gem_doc_list gemdoc
 
-complete -W 'apps1 apps2 client1 db1 db2 dev keymaster legacy1 media proxy1 staging utilities' $default ssh
+complete -W 'apps1 apps2 db1 db2 legacy1 media proxy1 staging utilities' $default ssh
 
 function tunnel {
   if [ "apps1_ipmi" == "$1" ]
@@ -345,6 +345,9 @@ function tunnel {
   elif [ "db2_mongo" == "$1" ]
   then
     ssh -L 8888:db2:27017 -N xspond@proxy1.xspond.com
+  elif [ "proxy1_mongo" == "$1" ]
+  then
+    ssh -L 8888:localhost:27017 -N xspond@proxy1.xspond.com
   elif [ "dtp_rdc" == "$1" ]
   then
     ssh -L 3389:dtp:3389 -N -C xspond@proxy1.xspond.com
@@ -355,12 +358,9 @@ function tunnel {
   elif [ "staging_postgres" == "$1" ]
   then
     ssh -L 5434:127.0.0.1:5432 -N xspond@10.10.10.23
-  elif [ "xmp_postgres" == "$1" ]
-  then
-    ssh -L 5433:127.0.0.1:5432 -N xspond@xmp1.xspond.com
   fi
 }
-complete -W 'apps1_ipmi db1_areca db1_ipmi db1_mongo db1_mysql db2_mongo dtp_rdc netgear_http staging_postgres xmp_postgres' $default tunnel
+complete -W 'apps1_ipmi db1_areca db1_ipmi db1_mongo db1_mysql db2_mongo dtp_rdc netgear_http proxy1_mongo staging_postgres' $default tunnel
 
 
 # Functions
@@ -396,6 +396,7 @@ export PATH=$PATH:/usr/local/node/bin:/usr/local/mongodb/bin
 
 # Add MySQL to the path
 export PATH=$PATH:/usr/local/mysql/bin
+
 
 export MANPATH=/usr/local/git/man:$MANPATH
 
