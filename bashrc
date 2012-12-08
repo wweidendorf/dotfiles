@@ -180,20 +180,7 @@ function sr {
 	fi
 }
 function ss {
-	if [ -f './config/unicorn.rb' ]; then
-		echo "$*" | grep -E "(^| )-p " > /dev/null 2>&1
-		if [ $? != 1 ]; then
-			PORT=""
-		else
-			PORT="-p 3000"
-		fi
-
-		if [ -f './script/rails' ]; then
-			bundle exec unicorn_rails $PORT $*
-		else
-			bundle exec unicorn $PORT $*
-		fi
-	elif [ -f './script/rails' ]; then
+  if [ -f './script/rails' ]; then
 		rails server $*
 	elif [ -f './script/server' ]; then
 		./script/server $*
