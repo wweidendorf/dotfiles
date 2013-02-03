@@ -329,35 +329,29 @@ complete -W 'apps1 apps2 db1 db2 legacy media router1 staging utilities' $defaul
 function tunnel {
   if [ "apps1_ipmi" == "$1" ]
   then
-    ssh -L 8080:10.10.11.52:80 -N xspond@proxy1.xspond.com
+    ssh -L 8080:10.10.11.52:80 -N gateway@router1.xspond.com
   elif [ "db1_areca" == "$1" ]
   then
-    ssh -L 8080:10.10.11.101:80 -N xspond@proxy1.xspond.com
+    ssh -L 8080:10.10.11.101:80 -N gateway@router1.xspond.com
   elif [ "db1_ipmi" == "$1" ]
   then
-    ssh -L 8080:10.10.11.51:80 -N xspond@proxy1.xspond.com
+    ssh -L 8080:10.10.11.51:80 -N gateway@router1.xspond.com
   elif [ "db1_mongo" == "$1" ]
   then
-    ssh -L 8888:db1:27017 -N xspond@proxy1.xspond.com
+    ssh -L 8888:db1:27017 -N gateway@router1.xspond.com
   elif [ "db1_mysql" == "$1" ]
   then
-    ssh -L 3306:db1:3306 -N xspond@proxy1.xspond.com
+    ssh -L 3306:db1:3306 -N gateway@router1.xspond.com
   elif [ "db2_mongo" == "$1" ]
   then
-    ssh -L 8888:db2:27017 -N xspond@proxy1.xspond.com
-  elif [ "proxy1_mongo" == "$1" ]
-  then
-    ssh -L 8888:localhost:27017 -N xspond@proxy1.xspond.com
+    ssh -L 8888:db2:27017 -N gateway@router1.xspond.com
   elif [ "dtp_rdc" == "$1" ]
   then
-    ssh -L 3389:dtp:3389 -N -C xspond@proxy1.xspond.com
+    ssh -L 3389:dtp:3389 -N -C gateway@router1.xspond.com
   elif [ "netgear_http" == "$1" ]
   then
     open "http://localhost:9090/"
-    ssh -L 9090:10.10.11.5:80 -N -C xspond@proxy1.xspond.com
-  elif [ "staging_postgres" == "$1" ]
-  then
-    ssh -L 5434:127.0.0.1:5432 -N xspond@10.10.10.23
+    ssh -L 9090:10.10.11.5:80 -N -C gateway@router1.xspond.com
   fi
 }
 complete -W 'apps1_ipmi db1_areca db1_ipmi db1_mongo db1_mysql db2_mongo dtp_rdc netgear_http proxy1_mongo staging_postgres' $default tunnel
