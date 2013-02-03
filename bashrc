@@ -391,12 +391,12 @@ export PATH=$PATH:/usr/local/node/bin:/usr/local/mongodb/bin
 # Add MySQL to the path
 export PATH=$PATH:/usr/local/mysql/bin
 
-
+# Add git docs to manpath
 export MANPATH=/usr/local/git/man:$MANPATH
 
 # Setup CDPATH
 PROJ_DIR="~/Projects/Work"
-ORDERED_SUBFOLDERS="citadel omega libraries dealers blueprints assets infrastructure open_source platform"
+ORDERED_SUBFOLDERS="clients citadel libraries dealers blueprints assets infrastructure open_source"
 
 CDPATH=".:~:$PROJ_DIR"
 for FOLDER in $ORDERED_SUBFOLDERS; do
