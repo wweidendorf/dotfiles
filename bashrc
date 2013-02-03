@@ -127,7 +127,7 @@ function m {
 
 # Setup automatic bundle exec for common gem executables
 
-BUNDLED_COMMANDS="${BUNDLED_COMMANDS:-cucumber heroku padrino rackup rails rake rspec ruby shotgun spec spork unicorn unicorn_rails}"
+BUNDLED_COMMANDS="${BUNDLED_COMMANDS:-cucumber padrino rackup rails rake rspec ruby shotgun spec spork unicorn unicorn_rails}"
 
 ## Functions
 
