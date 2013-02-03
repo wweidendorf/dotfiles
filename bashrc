@@ -324,7 +324,7 @@ complete -F _gem_list cdgem
 complete -F _gem_list mategem
 complete -F _gem_doc_list gemdoc
 
-complete -W 'apps1 apps2 db1 db2 legacy1 media proxy1 staging utilities' $default ssh
+complete -W 'apps1 apps2 db1 db2 legacy media router1 staging utilities' $default ssh
 
 function tunnel {
   if [ "apps1_ipmi" == "$1" ]
