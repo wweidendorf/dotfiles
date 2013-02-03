@@ -432,3 +432,5 @@ export PATH=./.bin:$PATH
 # Use GCC to compile for now, not clang
 export CC=/usr/bin/gcc
 
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
