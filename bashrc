@@ -379,12 +379,6 @@ fi
 
 # stty erase 
 
-# export EC2_HOME=/home/Admin/ec2-api-tools-1.2-13740
-# export PATH=$PATH:$EC2_HOME/bin
-# export EC2_PRIVATE_KEY=~/.ec2/pk-Y4HR7ABMOEFP56SQUHSEL5FBYT3A753C.pem
-# export EC2_CERT=~/.ec2/cert-Y4HR7ABMOEFP56SQUHSEL5FBYT3A753C.pem
-# export JAVA_HOME="/cygdrive/c/Program Files/Java/jdk1.6.0_03"
-
 # Add git to the PATH
 export PATH=$PATH:/usr/local/git/bin
 
