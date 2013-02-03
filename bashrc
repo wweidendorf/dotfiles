@@ -164,7 +164,9 @@ done
 
 # Rails/Padrino aliases
 function sc {
-	if [ -f './script/rails' ]; then
+	if [ -f './bin/rails' ]; then
+		rails console $*
+	elif [ -f './script/rails' ]; then
 		rails console $*
 	elif [ -f './config/apps.rb' ]; then
 	  padrino console $*
@@ -180,7 +182,9 @@ function sr {
 	fi
 }
 function ss {
-  if [ -f './script/rails' ]; then
+  if [ -f './bin/rails' ]; then
+		rails server $*
+  elif [ -f './script/rails' ]; then
 		rails server $*
 	elif [ -f './script/server' ]; then
 		./script/server $*
@@ -191,7 +195,9 @@ function ss {
 	fi
 }
 function sg {
-	if [ -f './script/rails' ]; then
+	if [ -f './bin/rails' ]; then
+		rails generate $*
+	elif [ -f './script/rails' ]; then
 		rails generate $*
 	elif [ -f './config/apps.rb' ]; then
 	  padrino g $*
