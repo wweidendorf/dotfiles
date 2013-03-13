@@ -97,18 +97,12 @@ alias df='df -h'
 alias du='du -h'
 
 # Misc :)
-# alias less='less -r'                          # raw control characters
-# alias whence='type -a'                        # where, of a sort
 alias grep='grep --color'                     # show differences in colour
 alias myips="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\   -f2"
 
 # Some shortcuts for different directory listings
-# alias ls='ls -hF --color=tty'                 # classify files in colour
-# alias dir='ls --color=auto --format=vertical'
-# alias vdir='ls --color=auto --format=long'
 alias ll='ls -l'                              # long list
 alias la='ls -A'                              # all but . and ..
-# alias l='ls -CF'                              #
 
 # Moving up directories
 alias ..='cd ..'
