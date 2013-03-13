@@ -428,3 +428,6 @@ export CC=/usr/bin/gcc
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# Needed for mysql rubygems (mysql2, etc)
+export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
