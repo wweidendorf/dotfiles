@@ -64,6 +64,11 @@ if [ -n "$PS1" ]; then
   fi
 fi
 
+# Terminal Emulation
+# ##################
+
+# Declare terminal as xterm-color to get widest support for color
+export TERM="xterm-color"
 
 # History Options
 # ###############
