@@ -184,7 +184,7 @@ alias rdm='rake db:migrate'
 alias rr='rake routes'
 
 alias b='bundle'
-alias bi="b install --path vendor --binstubs=.bin"
+alias bi="b install --path vendor --binstubs=bin"
 alias bu="b update"
 alias be="b exec"
 alias bo="b open"
@@ -398,8 +398,8 @@ export JOBS=9
 export PATH=$HOME/.rbenv/bin:$PATH
 eval "$(rbenv init -)"
 
-# Add bundler binstubs to the head of the path
-export PATH=./.bin:$PATH
+# Add binstubs to the head of the path
+export PATH=./.bin:./bin:$PATH
 
 # Use GCC to compile for now, not clang
 export CC=/usr/bin/gcc
