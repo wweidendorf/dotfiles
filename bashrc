@@ -154,12 +154,9 @@ function run-with-bundler {
 }
 
 ## Main program
-
 for CMD in $BUNDLED_COMMANDS; do
   alias $CMD="run-with-bundler $CMD"
 done
-
-
 
 # Rails/Padrino aliases
 function sc {
@@ -167,19 +164,11 @@ function sc {
 		rails console $*
 	elif [ -f './script/rails' ]; then
 		rails console $*
-	elif [ -f './config/apps.rb' ]; then
-	  padrino console $*
 	else
 		./script/console $*
 	fi
 }
-function sr {
-	if [ -f './script/rails' ]; then
-		rails runner $*
-	else
-		./script/runner $*
-	fi
-}
+
 function ss {
   if [ -f './bin/rails' ]; then
 		rails server $*
@@ -187,23 +176,21 @@ function ss {
 		rails server $*
 	elif [ -f './script/server' ]; then
 		./script/server $*
-	elif [ -f './config/apps.rb' ]; then
-	  padrino start $*
 	else
 	  ruby -r webrick -e "trap('INT')  { @server.stop }; (@server = WEBrick::HTTPServer.new(:DocumentRoot => Dir.pwd, :Port => 3000)).start"
 	fi
 }
+
 function sg {
 	if [ -f './bin/rails' ]; then
 		rails generate $*
 	elif [ -f './script/rails' ]; then
 		rails generate $*
-	elif [ -f './config/apps.rb' ]; then
-	  padrino g $*
 	else
 		./script/generate $*
 	fi
 }
+
 alias tfd='tail -f log/development.log'
 alias tfp='tail -f log/production.log'
 alias atr='autotest -rails'
