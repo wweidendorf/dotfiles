@@ -302,7 +302,10 @@ complete -F _gem_list cdgem
 complete -F _gem_list mategem
 complete -F _gem_doc_list gemdoc
 
-complete -W 'apps1 apps2 db1 db2 legacy media router1 staging utilities' $default ssh
+complete -W 'citadel1.aws.xspond.com citadel2.aws.xspond.com citadel3.aws.xspond.com
+  client1.aws.xspond.com client2.aws.xspond.com client3.aws.xspond.com
+  mongodb1.aws.xspond.com mongodb2.aws.xspond.com mongodb3.aws.xspond.com
+  utilities.aws.xspond.com' $default ssh
 
 # Functions
 # #########
