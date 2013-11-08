@@ -1,10 +1,6 @@
 Host *
 	ServerAliveInterval 120
 
-Host apps1
-	user xspond
-	ProxyCommand ssh xspond@64.9.205.227 exec nc %h %p
-
 Host tritonsws.com
 	user ubuntu
 	IdentityFile /Users/wweidendorf/.ssh/triton.id_rsa
