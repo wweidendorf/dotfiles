@@ -24,3 +24,7 @@ Host client1.aws.xspond.com
 Host citadel1.aws.xspond.com
 	user ubuntu
 	IdentityFile /Users/wweidendorf/.ssh/aws.id_rsa
+
+Host utilities.aws.xspond.com
+	user ubuntu
+	IdentityFile /Users/wweidendorf/.ssh/aws.id_rsa
