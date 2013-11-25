@@ -21,7 +21,15 @@ Host client1.aws.xspond.com
 	user ubuntu
 	IdentityFile /Users/wweidendorf/.ssh/aws.id_rsa
 
+Host client2.aws.xspond.com
+	user ubuntu
+	IdentityFile /Users/wweidendorf/.ssh/aws.id_rsa
+
 Host citadel1.aws.xspond.com
+	user ubuntu
+	IdentityFile /Users/wweidendorf/.ssh/aws.id_rsa
+
+Host citadel2.aws.xspond.com
 	user ubuntu
 	IdentityFile /Users/wweidendorf/.ssh/aws.id_rsa
 
