@@ -338,6 +338,9 @@ export PATH=$PATH:/usr/local/mysql/bin
 # Add git docs to manpath
 export MANPATH=/usr/local/git/man:$MANPATH
 
+# Add Postgres.app
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
+
 # Setup CDPATH
 PROJ_DIR="~/Projects/Work"
 ORDERED_SUBFOLDERS="clients citadel libraries dealers blueprints assets infrastructure open_source"
