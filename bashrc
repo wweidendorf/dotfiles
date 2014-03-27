@@ -352,10 +352,6 @@ done
 
 export CLICOLOR="1"
 
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
-export RUBY_GC_MALLOC_LIMIT=50000000
-export RUBY_HEAP_MIN_SLOTS=250000
-
 export BUNDLER_EDITOR=mate
 
 # Set environment flags for build scripts
