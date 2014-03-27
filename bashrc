@@ -305,7 +305,7 @@ complete -F _gem_doc_list gemdoc
 complete -W 'citadel1.aws.xspond.com citadel2.aws.xspond.com citadel3.aws.xspond.com
   client1.aws.xspond.com client2.aws.xspond.com client3.aws.xspond.com
   mongodb1.aws.xspond.com mongodb2.aws.xspond.com mongodb3.aws.xspond.com
-  utilities.aws.xspond.com' $default ssh
+  dev.xspond.com utilities.aws.xspond.com' $default ssh
 
 # Functions
 # #########
