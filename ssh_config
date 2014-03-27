@@ -36,3 +36,15 @@ Host citadel2.aws.xspond.com
 Host utilities.aws.xspond.com
 	user ubuntu
 	IdentityFile /Users/wweidendorf/.ssh/aws.id_rsa
+
+Host staging.xspond.com
+	user ubuntu
+	IdentityFile /Users/wweidendorf/.ssh/aws.id_rsa
+
+Host dev.xspond.com
+	user ubuntu
+	IdentityFile /Users/wweidendorf/.ssh/aws.id_rsa
+
+Host *.compute-1.amazonaws.com
+  user ubuntu
+  IdentityFile /Users/wweidendorf/.ssh/aws.id_rsa
