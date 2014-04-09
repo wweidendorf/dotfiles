@@ -376,3 +376,6 @@ export PATH="/usr/local/sbin:$PATH"
 
 # Needed for mysql rubygems (mysql2, etc)
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
+
+# Set the environment variable for the docker daemon
+export DOCKER_HOST=tcp://localhost:4243
