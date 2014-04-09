@@ -14,6 +14,11 @@
 
 # ~/.bash_profile: executed by bash for login shells.
 
+# source the users env_keys if it exists
+if [ -e "${HOME}/.env_keys" ] ; then
+  source "${HOME}/.env_keys"
+fi
+
 # source the system wide bashrc if it exists
 if [ -e /etc/bash.bashrc ] ; then
   source /etc/bash.bashrc
