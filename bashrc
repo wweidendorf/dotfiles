@@ -80,26 +80,9 @@ export HISTCONTROL="ignoredups"
 # export HISTIGNORE="[   ]*:&:bg:fg:exit"
 export HISTIGNORE="&:ls:[bf]g:exit:gst:gl:gp:gt:gittower"
 
-# Whenever displaying the prompt, write the previous line to disk
-# export PROMPT_COMMAND="history -a"
-
-# Default to human readable figures
-alias df='df -h'
-alias du='du -h'
-
 # Misc :)
 alias grep='grep --color'                     # show differences in colour
 alias myips="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\   -f2"
-
-# Some shortcuts for different directory listings
-alias ll='ls -l'                              # long list
-alias la='ls -A'                              # all but . and ..
-
-# Moving up directories
-alias ..='cd ..'
-alias ...='cd .. && cd ..'
-alias ....='cd .. && cd .. && cd ..'
-alias .....='cd .. && cd .. && cd .. && cd ..'
 
 function m {
   files=$(ls *.tmproj 2> /dev/null)
